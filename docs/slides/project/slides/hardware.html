@@ -1,0 +1,44 @@
+<section id="hardware" data-transition="fade" style="background:#F6F4EF;color:#15253A;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:48px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#B04A17">Compute resources</p>
+<h2 style="font-family:'Source Serif 4', Georgia, serif;font-size:64px;font-weight:600;line-height:1.15;color:#15253A">Yes: a laptop GPU, Colab and a shared cache</h2>
+</div>
+<div style="display:flex;gap:16px;align-items:center">
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#FFFDF8;padding:28px;border:1px solid #DDD6C8;border-radius:16px">
+<x-icon name="Code" style="width:48px;height:48px;color:#B04A17"></x-icon>
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#5B6673">Local · Peter</p>
+<h3 style="font-size:32px;font-weight:600;color:#15253A">RTX 3060 Laptop, 6 GB</h3>
+<p style="font-size:24px;line-height:1.35;color:#3D4A58">DINOv3 visual expert; debug the whole pipeline with Qwen3-VL-4B in 4-bit</p>
+</div>
+<x-connector head="both" style="width:64px;color:#5B6673"></x-connector>
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#15253A;padding:28px;border-radius:16px">
+<x-icon name="Database" style="width:48px;height:48px;color:#E8925C"></x-icon>
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#C9D3DD">Shared</p>
+<h3 style="font-size:32px;font-weight:600;color:#F6F4EF">Google Drive</h3>
+<p style="font-size:24px;line-height:1.35;color:#C9D3DD">MMAD images + one JSONL cache per agent, resumable</p>
+</div>
+<x-connector head="both" style="width:64px;color:#5B6673"></x-connector>
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#FFFDF8;padding:28px;border:1px solid #DDD6C8;border-radius:16px">
+<x-icon name="Cloud" style="width:48px;height:48px;color:#B04A17"></x-icon>
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#5B6673">Cloud · Charles</p>
+<h3 style="font-size:32px;font-weight:600;color:#15253A">Colab Pro, L4 / T4</h3>
+<p style="font-size:24px;line-height:1.35;color:#3D4A58">8B readers served with vLLM, baselines and final test (100 units, no A100)</p>
+</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:16px">
+<p style="font-size:26px;font-weight:600;color:#15253A">Pass-based execution: one model on the GPU at a time</p>
+<div style="display:flex;gap:12px;align-items:center">
+<p style="font-size:24px;background:#FBEBDD;padding:12px 20px;border-radius:999px;white-space:nowrap">Expert pass</p>
+<x-connector head="end" style="width:40px;color:#5B6673"></x-connector>
+<p style="font-size:24px;background:#EAE6DC;padding:12px 20px;border-radius:999px;white-space:nowrap">Reader A pass</p>
+<x-connector head="end" style="width:40px;color:#5B6673"></x-connector>
+<p style="font-size:24px;background:#EAE6DC;padding:12px 20px;border-radius:999px;white-space:nowrap">Reader B pass</p>
+<x-connector head="end" style="width:40px;color:#5B6673"></x-connector>
+<p style="font-size:24px;background:#EAE6DC;padding:12px 20px;border-radius:999px;white-space:nowrap">Verifier pass</p>
+<x-connector head="end" style="width:40px;color:#5B6673"></x-connector>
+<p style="font-size:24px;color:#F6F4EF;background:#15253A;padding:12px 20px;border-radius:999px;white-space:nowrap">Aggregate</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#5B6673">Budget: cost measured on 50 questions before the test; baselines B1, B2 and B4 reuse the cached reader answers.</p>
+<aside>We do have hardware. Locally, a 6 GB laptop GPU is enough for the DINOv3 expert and for debugging the full pipeline with a small 4B model in 4-bit. The two 8B readers run on Colab Pro with vLLM, a fast batched inference server, on L4 or T4 GPUs; we avoid the A100 because it burns compute units 4 to 5 times faster. Each agent runs over the whole split, saves its answers to Drive and frees the GPU, so two 8B models are never loaded together and a disconnect does not lose work. Charles has no local GPU and works directly on Colab.</aside>
+</section>

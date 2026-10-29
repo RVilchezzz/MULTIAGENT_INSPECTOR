@@ -1,0 +1,38 @@
+<section id="descricao" data-transition="fade" style="background:#F6F4EF;color:#15253A;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#B04A17">Project description</p>
+<h2 style="font-family:'Source Serif 4', Georgia, serif;font-size:64px;font-weight:600;line-height:1.15;color:#15253A">The task: one good photo, one part, a question</h2>
+</div>
+<div style="display:flex;gap:64px;flex:1">
+<div style="flex:3;display:flex;flex-direction:column;gap:24px">
+<div style="display:flex;gap:24px;align-items:center">
+<div style="display:flex;flex-direction:column;gap:8px">
+<img src="/_blob/4d6a9c5d27f68aee399da8830e59fe7e" alt="Good bottle, reference" style="width:250px;height:250px;object-fit:cover;border-radius:12px">
+<p style="font-size:24px;font-weight:600;color:#3D4A58">Reference (good)</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px">
+<img src="/_blob/a59475f857611381ceb6257ce3f906b3" alt="Bottle with broken rim" style="width:250px;height:250px;object-fit:cover;border-radius:12px;border:4px solid #B04A17">
+<p style="font-size:24px;font-weight:600;color:#B04A17">Part to inspect</p>
+</div>
+<x-connector head="end" style="width:56px;color:#5B6673"></x-connector>
+<div style="flex:1;display:flex;flex-direction:column;gap:10px;background:#FFFDF8;padding:24px 28px;border:1px solid #DDD6C8;border-radius:16px">
+<p style="font-size:24px;font-weight:600;color:#15253A">Where is the defect?</p>
+<p style="font-size:24px;line-height:1.35;color:#3D4A58">A. Top right<br>B. Top left<br>C. Center<br><b><span style="color:#B04A17">D. Bottom right ✓</span></b></p>
+</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:10px;background:#EAE6DC;padding:28px 32px;border-left:6px solid #B04A17;border-radius:8px">
+<h3 style="font-size:28px;font-weight:600;color:#B04A17">Hypothesis</h3>
+<p style="font-size:28px;line-height:1.4;color:#15253A">A training-free team (a visual expert, two MLLM readers and a verifier) beats the best single model and a same-cost majority vote.</p>
+</div>
+</div>
+<div style="flex:2;display:flex;flex-direction:column;gap:20px;justify-content:center">
+<p style="font-size:24px;font-weight:600;color:#5B6673">Mean MMAD accuracy (axis from 50%)</p>
+<div style="display:flex;flex-direction:column;gap:6px"><p style="font-size:24px;color:#3D4A58">Expert human inspectors</p><div style="display:flex;gap:16px;align-items:center"><div style="width:440px;height:40px;background:#5B6673;border-radius:4px"></div><p style="font-size:28px;font-weight:600">86.7%</p></div></div>
+<div style="display:flex;flex-direction:column;gap:6px"><p style="font-size:24px;color:#3D4A58">GPT-4o (closed)</p><div style="display:flex;gap:16px;align-items:center"><div style="width:299px;height:40px;background:#8A949E;border-radius:4px"></div><p style="font-size:28px;font-weight:600">74.9%</p></div></div>
+<div style="display:flex;flex-direction:column;gap:6px"><p style="font-size:24px;color:#3D4A58">Qwen3-VL-8B (open): our baseline</p><div style="display:flex;gap:16px;align-items:center"><div style="width:287px;height:40px;background:#B04A17;border-radius:4px"></div><p style="font-size:28px;font-weight:600;color:#B04A17">73.9%</p></div></div>
+<p style="font-size:24px;line-height:1.35;color:#3D4A58">A 13-point gap to humans: that is the room we try to close.</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#5B6673">Real MMAD example (MVTec AD bottle, question and answer from mmad.json). Accuracy: Jiang et al., ICLR 2025; official MMAD leaderboard, Oct 2026.</p>
+<aside>This is exactly what the system receives: one photo of a good part (the reference), the part to inspect, and multiple-choice questions. This bottle has 5 questions in MMAD: is there a defect, which type, where, what it looks like, and its effect. When a production line switches products there is no time or data to train a detector, only one good photo. MLLMs (multimodal large language models, LLMs that also see images) can do this from instructions, but they are still 13 points below expert inspectors. The hypothesis is measurable: we compare against the best single model and against voting with the same number of calls.</aside>
+</section>

@@ -1,0 +1,15 @@
+# heavy data and outputs
+data/MMAD/
+outputs/
+*.zip
+# PDFs (SiGMA is ~54 MB); fetch with scripts/download_papers.sh
+papers/*.pdf
+# python
+__pycache__/
+*.pyc
+.venv/
+.ipynb_checkpoints/
+# model weights / caches
+*.safetensors
+*.bin
+.cache/

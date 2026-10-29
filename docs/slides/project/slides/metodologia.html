@@ -1,0 +1,48 @@
+<section id="metodologia" data-transition="fade" style="background:#F6F4EF;color:#15253A;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:36px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#B04A17">Methodology</p>
+<h2 style="font-family:'Source Serif 4', Georgia, serif;font-size:64px;font-weight:600;line-height:1.15;color:#15253A">One image through the workflow</h2>
+</div>
+<div style="display:flex;gap:12px;align-items:stretch">
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#EAE6DC;padding:20px;border-radius:16px">
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#5B6673">Input</p>
+<div style="display:flex;gap:8px">
+<img src="/_blob/4d6a9c5d27f68aee399da8830e59fe7e" alt="Reference: good bottle" style="width:116px;height:116px;object-fit:cover;border-radius:8px">
+<img src="/_blob/a59475f857611381ceb6257ce3f906b3" alt="Part: broken bottle" style="width:116px;height:116px;object-fit:cover;border-radius:8px;border:3px solid #B04A17">
+</div>
+<p style="font-size:24px;line-height:1.3;color:#3D4A58">1 reference + the part</p>
+<p style="font-size:24px;line-height:1.3;color:#15253A;background:#FFFDF8;padding:10px 12px;border-radius:8px">“Where is the defect?” A / B / C / D</p>
+</div>
+<x-connector head="end" style="width:40px;color:#5B6673"></x-connector>
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#FBEBDD;padding:20px;border:2px solid #B04A17;border-radius:16px">
+<p style="font-size:24px;font-weight:600;color:#B04A17">1 · Visual expert</p>
+<img src="/_blob/df8cc22ae2a4799f961c87d3cabb7372" alt="Anomaly map over the bottle: hot region on the broken rim, bottom right" style="width:236px;height:236px;object-fit:cover;border-radius:8px">
+<p style="font-size:24px;line-height:1.3;color:#15253A">Compares patches with the reference → map, <b>3×3 region</b>, crop, score</p>
+</div>
+<x-connector head="end" style="width:40px;color:#5B6673"></x-connector>
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#FFFDF8;padding:20px;border:1px solid #DDD6C8;border-radius:16px">
+<p style="font-size:24px;font-weight:600;color:#15253A">2 · Two readers</p>
+<div style="display:flex;flex-direction:column;gap:4px;background:#EAE6DC;padding:12px;border-radius:8px"><p style="font-size:24px;font-weight:600">Qwen3-VL-8B</p><p style="font-size:24px;color:#3D4A58">answer · confidence</p></div>
+<div style="display:flex;flex-direction:column;gap:4px;background:#EAE6DC;padding:12px;border-radius:8px"><p style="font-size:24px;font-weight:600">InternVL3-8B</p><p style="font-size:24px;color:#3D4A58">answer · confidence</p></div>
+<p style="font-size:24px;line-height:1.3;color:#3D4A58">Same photos + the expert’s hint; JSON reply</p>
+</div>
+<x-connector head="end" style="width:40px;color:#5B6673"></x-connector>
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#FFFDF8;padding:20px;border:1px solid #DDD6C8;border-radius:16px">
+<p style="font-size:24px;font-weight:600;color:#15253A">3 · Verifier</p>
+<p style="font-size:24px;line-height:1.4;color:#3D4A58">✓ valid schema<br>✓ answers consistent<br>✓ agrees with expert</p>
+<p style="font-size:24px;line-height:1.3;color:#15253A;background:#EAE6DC;padding:10px 12px;border-radius:8px">Conflict → reopen once, with the evidence</p>
+</div>
+<x-connector head="end" style="width:40px;color:#5B6673"></x-connector>
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#15253A;padding:20px;border-radius:16px">
+<p style="font-size:24px;font-weight:600;color:#E8925C">4 · Aggregator</p>
+<p style="font-size:24px;line-height:1.35;color:#C9D3DD">Weighted vote per reader and subtask; the expert votes on “defect?”</p>
+<p style="font-size:24px;line-height:1.3;color:#15253A;background:#F6F4EF;padding:10px 12px;border-radius:8px"><b>Final answer</b> + report</p>
+</div>
+</div>
+<div style="display:flex;gap:24px;align-items:center;background:#FFFDF8;padding:18px 24px;border:1px dashed #5B6673;border-radius:12px">
+<p style="font-size:24px;font-weight:600;color:#15253A;white-space:nowrap">5 · Log</p>
+<p style="font-size:24px;line-height:1.35;color:#3D4A58">Every message, time and token count saved as JSONL per image. No model is trained; the Python orchestrator runs this fixed workflow.</p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#5B6673">Real MMAD pair. Map: our illustrative 1-shot patch comparison with DINOv2 ViT-S/14 on this pair (the project will use DINOv3). True answer: bottom right.</p>
+<aside>Walk through one real image. Input: the good bottle and the broken one, plus the question. Step 1, the visual expert (frozen DINOv3) splits both photos into small patches and, for each patch of the part, measures how far it is from the most similar patch of the reference. The heat map you see was computed by us on this exact pair with DINOv2, and it lights up the broken rim. The peak is turned into text, a cell of a 3×3 grid such as "bottom right, high score", and a zoomed crop. (On this pair our quick DINOv2 version put the peak in the bottom-center cell, next to the true bottom-right answer: calibrating this is part of Delivery II.) Step 2, two readers from different model families answer in JSON. Step 3, the verifier checks the format, consistency and agreement with the expert, and reopens at most once to avoid loops. Step 4, the aggregator votes with weights fixed on the dev split. Step 5, everything is logged.</aside>
+</section>

@@ -1,0 +1,34 @@
+<section id="resultados" data-transition="fade" style="background:#EAE6DC;color:#15253A;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#B04A17">Results</p>
+<h2 style="font-family:'Source Serif 4', Georgia, serif;font-size:64px;font-weight:600;line-height:1.15;color:#15253A">The goal is to beat 73.9% with significance</h2>
+</div>
+<div style="display:flex;gap:56px;flex:1">
+<div style="display:flex;flex-direction:column;gap:12px;width:1020px">
+<p style="font-size:24px;font-weight:600;color:#5B6673">MMAD mean accuracy, 1-shot (axis from 50%)</p>
+<div style="position:relative;display:flex;flex-direction:column;gap:14px;width:1020px">
+<div style="display:flex;gap:16px;align-items:center"><p style="width:380px;font-size:24px;color:#3D4A58">Human expert inspector</p><div style="width:513px;height:36px;background:#5B6673;border-radius:4px"></div><p style="font-size:24px">86.7</p></div>
+<div style="display:flex;gap:16px;align-items:center"><p style="width:380px;font-size:24px;color:#3D4A58">SiGMA (other protocol)</p><div style="width:493px;height:36px;background:#C9D3DD;border:2px dashed #5B6673;border-radius:4px"></div><p style="font-size:24px">85.2</p></div>
+<div style="display:flex;gap:16px;align-items:center"><p style="width:380px;font-size:24px;color:#3D4A58">AD-Copilot 7B (trained)</p><div style="width:452px;height:36px;background:#8A949E;border-radius:4px"></div><p style="font-size:24px">82.3</p></div>
+<div style="display:flex;gap:16px;align-items:center"><p style="width:380px;font-size:24px;color:#3D4A58">GPT-4o</p><div style="width:349px;height:36px;background:#8A949E;border-radius:4px"></div><p style="font-size:24px">74.9</p></div>
+<div style="display:flex;gap:16px;align-items:center"><p style="width:380px;font-size:24px;font-weight:600;color:#B04A17">Qwen3-VL-8B: our B1</p><div style="width:335px;height:36px;background:#B04A17;border-radius:4px"></div><p style="font-size:24px;font-weight:600;color:#B04A17">73.9</p></div>
+<div style="display:flex;gap:16px;align-items:center"><p style="width:380px;font-size:24px;color:#3D4A58">Qwen2.5-VL-7B</p><div style="width:311px;height:36px;background:#8A949E;border-radius:4px"></div><p style="font-size:24px">72.2</p></div>
+<div style="display:flex;gap:16px;align-items:center"><p style="width:380px;font-size:24px;color:#3D4A58">InternVL3.5-8B</p><div style="width:214px;height:36px;background:#8A949E;border-radius:4px"></div><p style="font-size:24px">65.3</p></div>
+<div style="display:flex;gap:16px;align-items:center"><p style="width:380px;font-size:24px;font-weight:600;color:#15253A">Our system S</p><div style="width:513px;height:36px;border:2px dashed #B04A17;border-radius:4px"></div><p style="font-size:24px;font-weight:600">Nov 26</p></div>
+<div style="position:absolute;left:731px;top:0px;width:3px;height:400px;background:#B04A17;opacity:0.6"></div>
+</div>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:24px">
+<div style="display:flex;flex-direction:column;gap:12px;background:#FFFDF8;padding:28px;border:1px solid #DDD6C8;border-radius:16px">
+<h3 style="font-size:28px;font-weight:600;color:#15253A">Preliminary · Nov 12</h3>
+<p style="font-size:24px;line-height:1.4;color:#3D4A58">B1, B2 and the 4B model on dev; visual expert with anomaly maps; Colab throughput.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:12px;background:#FFFDF8;padding:28px;border:2px solid #B04A17;border-radius:16px">
+<h3 style="font-size:28px;font-weight:600;color:#15253A">Final · Nov 26</h3>
+<p style="font-size:24px;line-height:1.4;color:#3D4A58">S vs every baseline on test; largest gain expected in discrimination and localization.</p>
+</div>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#5B6673">No results of our own yet. Sources: official MMAD leaderboard (Oct 2026); SiGMA, arXiv 2610.12310 (not comparable: 256 references, tuned on MMAD).</p>
+<aside>This is the leaderboard we position ourselves in. Our baseline, Qwen3-VL-8B, sits at 73.9%, about a point below GPT-4o. The vertical line marks the bar we must clear. SiGMA is drawn dashed because it uses a different, much easier protocol. AD-Copilot is trained on industrial data, which we do not do. The empty dashed row is our system: its value will come from the test split, run once on Nov 26 after the configuration is frozen. For Delivery II we will show the baselines on the dev split and the working visual expert.</aside>
+</section>

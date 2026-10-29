@@ -1,0 +1,31 @@
+<section id="datasets" data-transition="fade" style="background:#F6F4EF;color:#15253A;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#B04A17">Datasets</p>
+<h2 style="font-family:'Source Serif 4', Georgia, serif;font-size:64px;font-weight:600;line-height:1.15;color:#15253A">MMAD: 8,366 images, 39,670 questions</h2>
+</div>
+<div style="display:flex;gap:56px;flex:1;align-items:center">
+<div style="display:flex;flex-direction:column;gap:8px">
+<img src="/_blob/c1fc776b6b157e3c7a78381c234f2e87" alt="MMAD composition: normal and abnormal images, 7 subtasks, 38 categories from 4 datasets" style="width:600px;height:560px;object-fit:contain;background:#FFFFFF;border-radius:12px">
+<p style="font-size:24px;color:#5B6673">Jiang et al., MMAD (ICLR 2025), Fig. 1</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:28px">
+<table style="font-family:'IBM Plex Sans', Arial, sans-serif;font-size:24px;color:#15253A">
+<tr><th style="width:30%;text-align:left">Source</th><th style="width:17%;text-align:right">Normal</th><th style="width:18%;text-align:right">Defective</th><th style="width:35%;text-align:left">License</th></tr>
+<tr><td>MVTec AD</td><td style="text-align:right">465</td><td style="text-align:right">1,226</td><td>CC BY-NC-SA 4.0</td></tr>
+<tr><td>VisA</td><td style="text-align:right">943</td><td style="text-align:right">1,198</td><td>CC BY 4.0</td></tr>
+<tr><td>MVTec LOCO</td><td style="text-align:right">573</td><td style="text-align:right">993</td><td>CC BY-NC-SA 4.0</td></tr>
+<tr><td>GoodsAD</td><td style="text-align:right">1,309</td><td style="text-align:right">1,659</td><td>Research use</td></tr>
+</table>
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:26px;font-weight:600;color:#15253A">Our split (fixed seed, stratified)</p>
+<div style="display:flex;height:64px">
+<div style="width:110px;display:flex;align-items:center;justify-content:center;background:#B04A17;border-radius:8px 0 0 8px"><p style="font-size:24px;font-weight:600;color:#F6F4EF">Dev</p></div>
+<div style="flex:1;display:flex;align-items:center;justify-content:center;background:#15253A;border-radius:0 8px 8px 0"><p style="font-size:24px;font-weight:600;color:#F6F4EF">Test pool · 90%</p></div>
+</div>
+<p style="font-size:24px;line-height:1.4;color:#3D4A58"><b>Dev 10%</b> (~840 images): prompts and weights are chosen here. <b>Test</b>: ~2,000 images from the 90%, run once with the frozen config.</p>
+</div>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#5B6673">Use: evaluation only, no training. github.com/jam-cc/MMAD · huggingface.co/datasets/jiang-cc/MMAD (corrected revision, Oct 22, 2026).</p>
+<aside>MMAD is a public benchmark (ICLR 2025) built on four industrial inspection datasets with 38 product categories. The figure shows its composition: normal and abnormal images in the center, the 7 subtasks in the middle ring and the categories outside. It comes fully labeled, so we annotate nothing; labels are only used to score answers. MMAD is test-only, so we make our own split: 10% for development, where we are allowed to look at answers while choosing prompts and weights, and a test sample from the rest, run once after the configuration is frozen on Nov 19. Limitation: one view per part; Real-IAD (5 views) is an optional extension.</aside>
+</section>

@@ -1,0 +1,32 @@
+<section id="motivacao" data-transition="fade" style="background:#F6F4EF;color:#15253A;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#B04A17">Motivation</p>
+<h2 style="font-family:'Source Serif 4', Georgia, serif;font-size:64px;font-weight:600;line-height:1.15;color:#15253A">MLLMs reason well once told where to look</h2>
+</div>
+<div style="display:flex;gap:56px;flex:1">
+<div style="flex:1;display:flex;flex-direction:column;gap:14px">
+<p style="font-size:24px;font-weight:600;color:#5B6673">MMAD, InternVL2-40B: accuracy with different “experts”</p>
+<p style="font-size:26px;font-weight:600;color:#15253A">Anomaly discrimination</p>
+<div style="display:flex;gap:16px;align-items:center"><p style="width:250px;font-size:24px;color:#3D4A58">MLLM alone</p><div style="width:319px;height:30px;background:#8A949E;border-radius:4px"></div><p style="font-size:24px">63.8</p></div>
+<div style="display:flex;gap:16px;align-items:center"><p style="width:250px;font-size:24px;color:#3D4A58">+ PatchCore map</p><div style="width:300px;height:30px;background:#C9D3DD;border-radius:4px"></div><p style="font-size:24px">60.0</p></div>
+<div style="display:flex;gap:16px;align-items:center"><p style="width:250px;font-size:24px;color:#3D4A58">+ AnomalyCLIP map</p><div style="width:298px;height:30px;background:#C9D3DD;border-radius:4px"></div><p style="font-size:24px">59.6</p></div>
+<div style="display:flex;gap:16px;align-items:center"><p style="width:250px;font-size:24px;font-weight:600;color:#B04A17">+ true location</p><div style="width:444px;height:30px;background:#B04A17;border-radius:4px"></div><p style="font-size:24px;font-weight:600;color:#B04A17">88.7</p></div>
+<p style="font-size:26px;font-weight:600;color:#15253A">Defect localization</p>
+<div style="display:flex;gap:16px;align-items:center"><p style="width:250px;font-size:24px;color:#3D4A58">MLLM alone</p><div style="width:265px;height:30px;background:#8A949E;border-radius:4px"></div><p style="font-size:24px">52.9</p></div>
+<div style="display:flex;gap:16px;align-items:center"><p style="width:250px;font-size:24px;color:#3D4A58">+ best detector</p><div style="width:302px;height:30px;background:#C9D3DD;border-radius:4px"></div><p style="font-size:24px">60.4</p></div>
+<div style="display:flex;gap:16px;align-items:center"><p style="width:250px;font-size:24px;font-weight:600;color:#B04A17">+ true location</p><div style="width:405px;height:30px;background:#B04A17;border-radius:4px"></div><p style="font-size:24px;font-weight:600;color:#B04A17">81.0</p></div>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:16px">
+<p style="font-size:24px;font-weight:600;color:#5B6673">Closest work: SiGMA (Oct 2026), 85.2% with a DINOv3 expert</p>
+<img src="/_blob/42b765089dcdffc977fd9e275d197bdb" alt="SiGMA overview: searcher, MLLM agents, DINOv3 defect expert and reliability controller" style="width:780px;height:350px;object-fit:contain;background:#FFFFFF;border:1px solid #DDD6C8;border-radius:12px">
+<table style="font-family:'IBM Plex Sans', Arial, sans-serif;font-size:24px;color:#15253A">
+<tr><th style="width:34%;text-align:left">Condition</th><th style="width:33%;text-align:left">SiGMA</th><th style="width:33%;text-align:left">Ours</th></tr>
+<tr><td>Normal images</td><td>up to 256</td><td>1</td></tr>
+<tr><td>Tuned on MMAD</td><td>yes, team + params</td><td>dev split only</td></tr>
+<tr><td>GPUs</td><td>4 × L20</td><td>Colab L4 / T4</td></tr>
+</table>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#5B6673">Left: Jiang et al., MMAD (ICLR 2025), Table 6; “true location” = ground-truth mask given as text (upper bound). Right: SiGMA, arXiv 2610.12310, Fig. 2.</p>
+<aside>This is why the core agent is a visual expert. In MMAD, when the MLLM is told where the defect is (ground truth turned into text), discrimination jumps by about 25 points and localization by 28. Off-the-shelf anomaly detectors (PatchCore, AnomalyCLIP) are not precise enough and even hurt discrimination, because they also fire on normal images. SiGMA shows a multi-agent team with a DINOv3 expert reaches 85.2%, but with up to 256 normal images, retrieved domain text, a team chosen on MMAD answers and 4 GPUs. Our question: how much of that gain survives with one reference photo and no tuning on the test?</aside>
+</section>

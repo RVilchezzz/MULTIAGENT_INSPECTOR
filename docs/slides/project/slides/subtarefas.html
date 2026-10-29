@@ -1,0 +1,24 @@
+<section id="subtarefas" data-transition="fade" style="background:#F6F4EF;color:#15253A;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#B04A17">Datasets · the questions</p>
+<h2 style="font-family:'Source Serif 4', Georgia, serif;font-size:64px;font-weight:600;line-height:1.15;color:#15253A">7 subtasks, all multiple choice</h2>
+</div>
+<div style="display:flex;gap:48px;flex:1;align-items:center">
+<img src="/_blob/46832523e73155bf92700e9a06dbebcf" alt="One example question per MMAD subtask, with the correct option highlighted" style="width:920px;height:597px;object-fit:contain;background:#FFFFFF;border:1px solid #DDD6C8;border-radius:12px">
+<div style="flex:1;display:flex;flex-direction:column;gap:24px">
+<table style="font-family:'IBM Plex Sans', Arial, sans-serif;font-size:24px;color:#15253A">
+<tr><th style="width:56%;text-align:left">Subtask</th><th style="width:22%;text-align:right">Questions</th><th style="width:22%;text-align:right">Options</th></tr>
+<tr style="background:#FBEBDD"><td>Anomaly discrimination</td><td style="text-align:right">8,297</td><td style="text-align:right">yes / no</td></tr>
+<tr><td>Defect classification</td><td style="text-align:right">4,688</td><td style="text-align:right">4</td></tr>
+<tr><td>Defect localization</td><td style="text-align:right">4,878</td><td style="text-align:right">4</td></tr>
+<tr><td>Defect description</td><td style="text-align:right">4,710</td><td style="text-align:right">4</td></tr>
+<tr><td>Defect analysis</td><td style="text-align:right">4,782</td><td style="text-align:right">4</td></tr>
+<tr><td>Object classification</td><td style="text-align:right">3,155</td><td style="text-align:right">4</td></tr>
+<tr><td>Object analysis</td><td style="text-align:right">9,160</td><td style="text-align:right">4</td></tr>
+</table>
+<p style="font-size:24px;line-height:1.4;color:#3D4A58">Score = accuracy per subtask, then the plain mean of the 7 (balanced accuracy for discrimination).</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#5B6673">Left: Jiang et al., MMAD (ICLR 2025), Fig. 2. Counts: corrected mmad.json (Oct 22, 2026), verified by us. Answers are used only to score, never as input.</p>
+<aside>Every image comes with several of these questions, already answered in mmad.json. The figure shows one example per subtask with the correct option highlighted. Discrimination is yes or no; everything else has four options, so random guessing gives 50% and 25%. Models do well on object questions and poorly on defect questions, which is where a visual expert should help most. The official metric is accuracy per subtask and the simple mean of the seven.</aside>
+</section>
